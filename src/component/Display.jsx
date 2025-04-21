@@ -3,24 +3,26 @@ import React from "react";
 import Item from "./Item";
 import Button from "./Button";
 
-const Display = (props) => {
-  const deleteExpense = ({ setExpense, expenses }) => {
-    setExpense(expenses.filter((el) => el.name !== expenses.item));
+const Display = ({ setExpense, expenses }) => {
+  const deleteExpense = (event) => {
+    setExpense(expenses.filter((el) => el.item !== expenses[event]));
+    console.log(expenses);
   };
 
   return (
     <ul>
-      {props.expenses.map((expenses, index) => {
+      {expenses.map((expenses, index) => {
         return (
           <>
             <Item
-              index={index}
+              key={index}
               item={expenses.item}
               price={expenses.price}
               date={expenses.date}
             />
             <br />
             <Button className="Delete" onClick={deleteExpense} />
+            <br />
           </>
         );
       })}

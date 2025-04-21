@@ -30,28 +30,24 @@ const Form = ({ expenses, setExpense, newExpense, setNewExpense }) => {
             <label>Item </label>
             <Input
               onChange={handleChange}
-              value={expenses.item} //newExpense.item
+              value={newExpense.item}
               className="item"
             />
             <label>Price </label>
             <Input
               onChange={handleChange}
-              value={expenses.price} //newExpense.price
+              value={newExpense.price}
               className="price"
             />
             <label>Date </label>
             <Input
               onChange={handleChange}
-              value={expenses.date} //newExpense.date
+              value={newExpense.date}
               className="date"
             />
           </>
           <br />
-          <Button
-            className="add"
-            onClick={handleSubmit}
-            children="Add expense"
-          />
+          <Button className="add" onClick={handleSubmit} />
         </div>
       </form>
     </div>

@@ -20,9 +20,10 @@ const App = () => {
         newExpense={newExpense}
         setNewExpense={setNewExpense}
       />
-      <ul></ul>
-      <h3>Display here</h3>
-      <Display expenses={expenses} setExpense={setExpense} />
+      <ul>
+        <h3>Display here</h3>
+        <Display expenses={expenses} setExpense={setExpense} />
+      </ul>
     </>
   );
 };
