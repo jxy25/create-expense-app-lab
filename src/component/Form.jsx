@@ -1,10 +1,17 @@
-import { useState } from "react";
 import React from "react";
-import Item from "./Item";
 import Input from "./Input";
 import Button from "./Button";
+import Label from "./Label";
 
-const Form = ({ expenses, setExpense, newExpense, setNewExpense }) => {
+const Form = ({
+  expenses,
+  setExpense,
+  newExpense,
+  setNewExpense,
+  item,
+  price,
+  date,
+}) => {
   const handleChange = (event) => {
     setNewExpense({
       ...newExpense,
@@ -14,8 +21,11 @@ const Form = ({ expenses, setExpense, newExpense, setNewExpense }) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    setExpense([...expenses, newExpense]);
+
+    const id = { newExpense, id: expenses.length };
+    setExpense([...expenses, id]);
     setNewExpense({
+      id: "",
       item: "",
       price: "",
       date: "",
@@ -25,30 +35,28 @@ const Form = ({ expenses, setExpense, newExpense, setNewExpense }) => {
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <div>
-          <>
-            <label>Item </label>
-            <Input
-              onChange={handleChange}
-              value={newExpense.item}
-              className="item"
-            />
-            <label>Price </label>
-            <Input
-              onChange={handleChange}
-              value={newExpense.price}
-              className="price"
-            />
-            <label>Date </label>
-            <Input
-              onChange={handleChange}
-              value={newExpense.date}
-              className="date"
-            />
-          </>
-          <br />
-          <Button className="add" onClick={handleSubmit} />
-        </div>
+        <>
+          <Label name={item} />
+          <Input
+            onChange={handleChange}
+            value={newExpense.item}
+            className="item"
+          />
+          <Label name={price} />
+          <Input
+            onChange={handleChange}
+            value={newExpense.price}
+            className="price"
+          />
+          <Label name={date} />
+          <Input
+            onChange={handleChange}
+            value={newExpense.date}
+            className="date"
+          />
+        </>
+        <br />
+        <Button className="add" onClick={handleSubmit} />
       </form>
     </div>
   );

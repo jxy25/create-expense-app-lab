@@ -4,8 +4,8 @@ import Display from "./component/Display";
 
 const App = () => {
   const [expenses, setExpense] = useState([]);
-
   const [newExpense, setNewExpense] = useState({
+    id: "",
     item: "",
     price: "",
     date: "",
@@ -19,6 +19,9 @@ const App = () => {
         setExpense={setExpense}
         newExpense={newExpense}
         setNewExpense={setNewExpense}
+        item="item"
+        price="price"
+        date="date"
       />
       <ul>
         <h3>Display here</h3>
